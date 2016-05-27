@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  h1= title
+  br
+
+  form()
+    table.table.table-striped.table-bordered
+      tr
+        td NAME
+        td Description
+        td Origin
+        td Characteristics
+        td Notes
+      if (typeof mangoes === "undefined")
+        tr
+          td
+      else
+        each mango in mangoes
+          tr
+            td #{mango.NAME._}
+            td #{mango.Description._}
+            td #{mango.Origin._}
+            td #{mango.Characteristics._}
+            td #{mango.Notes._}
+    
+  hr
+  form.well(action="/addmango", method="post")
+    label Mango NAME:
+    input(name="item[NAME]", type="textbox")
+    label Mango Description:
+    input(name="item[Description]", type="textbox")
+    br
+    label Mango Origin:
+    input(name="item[Origin]", type="textbox")
+    label Mango Characteristics:
+    input(name="item[Characteristics]", type="textbox")
+    br
+    label Mango Notes:
+    input(name="item[Notes]", type="textbox")  
+    br
+    button.btn(type="submit") Add item
